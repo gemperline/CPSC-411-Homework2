@@ -1,7 +1,6 @@
 package com.example.hwk2
 
 import android.util.Log
-import android.widget.TextView
 import com.google.gson.Gson
 import com.loopj.android.http.AsyncHttpClient
 import com.loopj.android.http.AsyncHttpResponseHandler
@@ -30,23 +29,17 @@ class ClaimService (val ctx : MainActivity) {
             responseBody: ByteArray?,
             error: Throwable?
         ) {
-            Log.d("ClaimService", "Failed to add claim to database")
+            Log.d("ClaimService", "Error: could not addd to database")
             ctx.statusFail()
         }
 
     }
 
     fun addClaim(cObj : Claim) {
-        // Call Http
         val client = AsyncHttpClient()
         val requestUrl = "http://192.168.56.1:8080/ClaimService/add"
-
-        // Convert the cObj into JSON string
-        val cJsonStr = Gson().toJson(cObj)
-
-        // Send the post request
-        val entity = StringEntity(cJsonStr)
-
+        val JSONString = Gson().toJson(cObj)
+        val entity = StringEntity(JSONString)
         client.post(ctx, requestUrl, entity, "application/json", AddServiceRespHandler())
     }
 }

@@ -10,13 +10,13 @@ import android.widget.TextView
 class LabelColumnGenerator(val ctx : Context) {
 
     fun generate() : LinearLayout {
-        val layoutObj = LinearLayout(ctx)
-        val lParams = ViewGroup.LayoutParams(
+        val layout = LinearLayout(ctx)
+        val layoutParams = ViewGroup.LayoutParams(
             ViewGroup.LayoutParams.WRAP_CONTENT,
             ViewGroup.LayoutParams.WRAP_CONTENT)
-        layoutObj.layoutParams = lParams
-        layoutObj.orientation = LinearLayout.VERTICAL
-        layoutObj.setBackgroundColor(Color.WHITE)
+        layout.layoutParams = layoutParams
+        layout.orientation = LinearLayout.VERTICAL
+        layout.setBackgroundColor(Color.WHITE)
         val lbParams = LinearLayout.LayoutParams(
             ViewGroup.LayoutParams.MATCH_PARENT,
             ViewGroup.LayoutParams.WRAP_CONTENT)
@@ -24,21 +24,19 @@ class LabelColumnGenerator(val ctx : Context) {
         lbParams.topMargin = 5
         lbParams.bottomMargin = 5
         lbParams.rightMargin = 5
+        var label = TextView(ctx)
+        label.text = "Claim Name"
+        label.gravity = Gravity.CENTER
+        label.setTextColor(Color.BLACK)
+        label.setBackgroundColor(Color.WHITE)
+        layout.addView(label, lbParams)
+        label = TextView(ctx)
+        label.text = "Date"
+        label.gravity = Gravity.CENTER
+        label.setTextColor(Color.BLACK)
+        label.setBackgroundColor(Color.WHITE)
+        layout.addView(label, lbParams)
 
-        var lbl = TextView(ctx)
-        lbl.text = "Claim Name"
-        lbl.gravity = Gravity.CENTER
-        lbl.setTextColor(Color.BLACK)
-        lbl.setBackgroundColor(Color.WHITE)
-        layoutObj.addView(lbl, lbParams)
-
-        lbl = TextView(ctx)
-        lbl.text = "Date"
-        lbl.gravity = Gravity.CENTER
-        lbl.setTextColor(Color.BLACK)
-        lbl.setBackgroundColor(Color.WHITE)
-        layoutObj.addView(lbl, lbParams)
-
-        return layoutObj
+        return layout
     }
 }

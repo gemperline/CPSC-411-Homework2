@@ -6,19 +6,17 @@ import android.view.ViewGroup
 import android.widget.LinearLayout
 
 class ObjDetailSectionGenerator(val ctx : Context) {
-    lateinit var layoutObj : LinearLayout
+    lateinit var linLayout : LinearLayout
 
     fun generate() : LinearLayout {
-        // Linear Layout
-        layoutObj = LinearLayout(ctx)
-        val lParams = ViewGroup.LayoutParams(
+        linLayout = LinearLayout(ctx)
+        val layoutParams = ViewGroup.LayoutParams(
             ViewGroup.LayoutParams.MATCH_PARENT,
             ViewGroup.LayoutParams.WRAP_CONTENT
         )
-        layoutObj.layoutParams = lParams
-        layoutObj.orientation = LinearLayout.HORIZONTAL
-        layoutObj.setBackgroundColor(Color.WHITE)
-
+        linLayout.layoutParams = layoutParams
+        linLayout.orientation = LinearLayout.HORIZONTAL
+        linLayout.setBackgroundColor(Color.WHITE)
         val lcParams = LinearLayout.LayoutParams(
             ViewGroup.LayoutParams.WRAP_CONTENT,
             ViewGroup.LayoutParams.MATCH_PARENT
@@ -26,7 +24,7 @@ class ObjDetailSectionGenerator(val ctx : Context) {
         val colGenerator = LabelColumnGenerator(ctx)
         var lblView = colGenerator.generate()
         lcParams.weight = 1.0F
-        layoutObj.addView(lblView, lcParams)
+        linLayout.addView(lblView, lcParams)
 
         val valGenerator = ValueColumnGenerator(ctx)
         val vcParams = LinearLayout.LayoutParams(
@@ -36,7 +34,7 @@ class ObjDetailSectionGenerator(val ctx : Context) {
         lblView = valGenerator.generate()
         vcParams.marginStart = 5
         vcParams.weight = 3.0F
-        layoutObj.addView(lblView, vcParams)
-        return layoutObj
+        linLayout.addView(lblView, vcParams)
+        return linLayout
     }
 }

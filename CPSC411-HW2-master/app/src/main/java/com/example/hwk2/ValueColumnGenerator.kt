@@ -8,32 +8,29 @@ import android.widget.LinearLayout
 
 class ValueColumnGenerator(val ctx : Context) {
     fun generate() : LinearLayout {
-        val layoutObj = LinearLayout(ctx)
+        val layout = LinearLayout(ctx)
         val layoutParams = ViewGroup.LayoutParams(
             ViewGroup.LayoutParams.WRAP_CONTENT,
             ViewGroup.LayoutParams.WRAP_CONTENT)
-        layoutObj.layoutParams = layoutParams
-        layoutObj.orientation = LinearLayout.VERTICAL
-        layoutObj.setBackgroundColor(Color.WHITE)
-
-        val vParams = LinearLayout.LayoutParams(
+        layout.layoutParams = layoutParams
+        layout.orientation = LinearLayout.VERTICAL
+        layout.setBackgroundColor(Color.WHITE)
+        val viewVals = LinearLayout.LayoutParams(
             ViewGroup.LayoutParams.MATCH_PARENT,
             ViewGroup.LayoutParams.WRAP_CONTENT)
-        vParams.topMargin = 5
-        vParams.bottomMargin = 5
+        viewVals.topMargin = 5
+        viewVals.bottomMargin = 5
+        var input = EditText(ctx)
+        input.id = (R.id.claim_title)
+        input.setHint("Enter the name")
+        input.setBackgroundColor(Color.LTGRAY)
+        layout.addView(input, viewVals)
+        input = EditText(ctx)
+        input.id = (R.id.claim_date)
+        input.setHint("Format: YYYY-MM-DD")
+        input.setBackgroundColor(Color.LTGRAY)
+        layout.addView(input, viewVals)
 
-        var value = EditText(ctx)
-        value.id = (R.id.claim_title)
-        value.setHint("Enter the name")
-        value.setBackgroundColor(Color.LTGRAY)
-        layoutObj.addView(value, vParams)
-
-        value = EditText(ctx)
-        value.id = (R.id.claim_date)
-        value.setHint("Format: YYYY MM-DD")
-        value.setBackgroundColor(Color.LTGRAY)
-        layoutObj.addView(value, vParams)
-
-        return layoutObj
+        return layout
     }
 }
