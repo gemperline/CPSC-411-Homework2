@@ -9,12 +9,12 @@ import android.widget.LinearLayout
 class ValueColumnGenerator(val ctx : Context) {
     fun generate() : LinearLayout {
         val layoutObj = LinearLayout(ctx)
-        val lParams = ViewGroup.LayoutParams(
+        val layoutParams = ViewGroup.LayoutParams(
             ViewGroup.LayoutParams.WRAP_CONTENT,
             ViewGroup.LayoutParams.WRAP_CONTENT)
-        layoutObj.layoutParams = lParams
+        layoutObj.layoutParams = layoutParams
         layoutObj.orientation = LinearLayout.VERTICAL
-        layoutObj.setBackgroundColor(Color.BLUE)
+        layoutObj.setBackgroundColor(Color.WHITE)
 
         val vParams = LinearLayout.LayoutParams(
             ViewGroup.LayoutParams.MATCH_PARENT,
@@ -24,13 +24,13 @@ class ValueColumnGenerator(val ctx : Context) {
 
         var value = EditText(ctx)
         value.id = (R.id.claim_title)
-        value.setHint("Enter title")
+        value.setHint("Enter the name")
         value.setBackgroundColor(Color.LTGRAY)
         layoutObj.addView(value, vParams)
 
         value = EditText(ctx)
         value.id = (R.id.claim_date)
-        value.setHint("Enter date as yyyy MM-dd")
+        value.setHint("Format: YYYY MM-DD")
         value.setBackgroundColor(Color.LTGRAY)
         layoutObj.addView(value, vParams)
 

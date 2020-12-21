@@ -16,7 +16,7 @@ class LabelColumnGenerator(val ctx : Context) {
             ViewGroup.LayoutParams.WRAP_CONTENT)
         layoutObj.layoutParams = lParams
         layoutObj.orientation = LinearLayout.VERTICAL
-        layoutObj.setBackgroundColor(Color.BLUE)
+        layoutObj.setBackgroundColor(Color.WHITE)
         val lbParams = LinearLayout.LayoutParams(
             ViewGroup.LayoutParams.MATCH_PARENT,
             ViewGroup.LayoutParams.WRAP_CONTENT)
@@ -26,7 +26,7 @@ class LabelColumnGenerator(val ctx : Context) {
         lbParams.rightMargin = 5
 
         var lbl = TextView(ctx)
-        lbl.text = "Claim Title"
+        lbl.text = "Claim Name"
         lbl.gravity = Gravity.CENTER
         lbl.setTextColor(Color.BLACK)
         lbl.setBackgroundColor(Color.WHITE)

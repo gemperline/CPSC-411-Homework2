@@ -12,19 +12,19 @@ import android.widget.LinearLayout
 import android.widget.TextView
 
 class ObjDetailScreenGenerator (val ctx : Context) {
-    lateinit var layoutObj : LinearLayout
+    lateinit var linearLayout : LinearLayout
 
     @SuppressLint("SetTextI18n")
     fun generate() : LinearLayout {
         // 1. Create a LinearLayout object
-        layoutObj = LinearLayout(ctx)
+        linearLayout = LinearLayout(ctx)
         val lParams = ViewGroup.LayoutParams(
             ViewGroup.LayoutParams.MATCH_PARENT,
             ViewGroup.LayoutParams.MATCH_PARENT
         )
-        layoutObj.layoutParams = lParams
-        layoutObj.orientation = LinearLayout.VERTICAL
-        layoutObj.setBackgroundColor(Color.DKGRAY)
+        linearLayout.layoutParams = lParams
+        linearLayout.orientation = LinearLayout.VERTICAL
+        linearLayout.setBackgroundColor(Color.DKGRAY)
 
         // 2. Add Screen Instructions
         val iParams = LinearLayout.LayoutParams(
@@ -39,14 +39,14 @@ class ObjDetailScreenGenerator (val ctx : Context) {
         instructions.setTextSize(TypedValue.COMPLEX_UNIT_SP, 20F)
         instructions.setTypeface(Typeface.create("arial", Typeface.BOLD))
         instructions.gravity = Gravity.CENTER
-        instructions.setTextColor(Color.BLUE)
+        instructions.setTextColor(Color.BLACK)
         instructions.setBackgroundColor(Color.WHITE)
-        layoutObj.addView(instructions, iParams)
+        linearLayout.addView(instructions, iParams)
 
         // 3. Add ObjDetailSection
         val fldRowGenerator = ObjDetailSectionGenerator(ctx)
         val colView = fldRowGenerator.generate()
-        layoutObj.addView(colView)
+        linearLayout.addView(colView)
 
         // 4. Create "Add" Button LinearLayout
         val aLayout = LinearLayout(ctx)
@@ -60,20 +60,20 @@ class ObjDetailScreenGenerator (val ctx : Context) {
         aLayout.setBackgroundColor(Color.GRAY)
 
         // 5. Create "Add" Button
-        val addButton = Button(ctx)
-        addButton.text = "Add"
-        addButton.setId(R.id.add_btn)
-        addButton.setBackgroundColor(Color.CYAN)
+        val submitBtn = Button(ctx)
+        submitBtn.text = "SUBMIT"
+        submitBtn.setId(R.id.add_btn)
+        submitBtn.setBackgroundColor(Color.WHITE)
         val abParams = LinearLayout.LayoutParams(
             ViewGroup.LayoutParams.WRAP_CONTENT,
             ViewGroup.LayoutParams.WRAP_CONTENT
         )
         abParams.gravity = Gravity.BOTTOM
         abParams.topMargin = 5
-        aLayout.addView(addButton, abParams)
+        aLayout.addView(submitBtn, abParams)
 
         // Add button LinearLayout to outer LinearLayout
-        layoutObj.addView(aLayout)
+        linearLayout.addView(aLayout)
 
         // 6. Add Status Message
         // Status title
@@ -90,7 +90,7 @@ class ObjDetailScreenGenerator (val ctx : Context) {
         var status = TextView(ctx)
         status.text = "Status:"
         status.gravity = Gravity.CENTER
-        status.setTextColor(Color.YELLOW)
+        status.setTextColor(Color.WHITE)
         status.setTextSize(TypedValue.COMPLEX_UNIT_SP, 18F)
         status.setTypeface(Typeface.create("arial", Typeface.BOLD))
 
@@ -111,9 +111,9 @@ class ObjDetailScreenGenerator (val ctx : Context) {
         smParams.topMargin = 5
         sLayout.addView(status, smParams)
 
-        layoutObj.addView(sLayout)
+        linearLayout.addView(sLayout)
 
-        return layoutObj
+        return linearLayout
     }
 
 }

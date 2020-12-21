@@ -17,7 +17,7 @@ class ObjDetailSectionGenerator(val ctx : Context) {
         )
         layoutObj.layoutParams = lParams
         layoutObj.orientation = LinearLayout.HORIZONTAL
-        layoutObj.setBackgroundColor(Color.BLUE)
+        layoutObj.setBackgroundColor(Color.WHITE)
 
         val lcParams = LinearLayout.LayoutParams(
             ViewGroup.LayoutParams.WRAP_CONTENT,
